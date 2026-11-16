@@ -1,0 +1,243 @@
+:root {
+  --bg: #1f1c1a;
+  --panel: #2b2724;
+  --text: #f1ece6;
+  --muted: #c4bcb2;
+  --accent: #e8a13a;
+  --wall: #d8d8d3;          /* gym-wall off-white */
+  --wall-edge: #a9a9a3;
+  --radius: 10px;
+  --wall-w: 440px;
+  --hs: 1;                  /* hold size multiplier (shrinks on small screens) */
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.55;
+}
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
+a { color: inherit; }
+
+/* Climb upward: hero (base camp) at the bottom, footer (summit) at the top.
+   script.js adds .climb-up to <body>. Remove it for a normal top-down page. */
+.page { display: flex; flex-direction: column; }
+body.climb-up .page { flex-direction: column-reverse; }
+
+/* ---------- Image placeholders (labeled block if the file is missing) ---------- */
+.ph {
+  position: relative;
+  background: linear-gradient(135deg, #5c5148, #3a322c);
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin-bottom: .75rem;
+}
+.ph::after {
+  content: attr(data-label);
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  padding: .5rem; text-align: center;
+  color: var(--muted); font-size: .8rem;
+}
+.ph img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+.ph.missing img { display: none; }
+
+/* ---------- Buttons ---------- */
+.buttons { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.25rem; }
+.btn {
+  padding: .6rem 1.1rem;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn.primary { background: var(--accent); color: #1f1c1a; }
+.btn:hover, .btn:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+.small { color: var(--muted); margin: .75rem 0 0; }
+
+/* ---------- Fixed navigation buttons (Start the climb / Base Camp) ---------- */
+.nav-btn {
+  position: fixed; top: .8rem; left: 0.8rem; z-index: 20;
+  padding: .55rem 1rem;
+  font: inherit; font-weight: 600; cursor: pointer;
+  color: #1f1c1a; background: var(--accent);
+  border: 2px solid #fff; border-radius: 999px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s ease;
+}
+.nav-btn.show { opacity: 1; pointer-events: auto; }
+.nav-btn:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+/* Center the Start the climb button */
+#startBtn {
+  left: 50%;
+  padding: .9rem 1.6rem;
+  font-size: 1.10rem;
+  transform: translateX(-50%);
+  animation: climbGlow 2s ease-in-out infinite;
+}
+
+@keyframes climbGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+}
+/* ---------- Hero ---------- */
+.hero { max-width: 1000px; margin: 0 auto; padding: 5rem 1.25rem 3rem; width: 100%; }
+.hero-top { display: grid; grid-template-columns: 260px 1fr; gap: 2.5rem; align-items: start; }
+.ph.circle { aspect-ratio: 1 / 1; border-radius: 50%; margin: 0; border: 4px solid var(--accent); }
+.ph.circle img { object-position: center 0%; }
+.hero h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+.title { font-size: 1.3rem; color: var(--accent); margin: 0; font-weight: 600; }
+.subtitle { font-size: 1.1rem; margin: .5rem 0 1rem; }
+.about { max-width: 65ch; margin: 0 0 1rem; }
+.hero-bottom { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid #40372f; }
+.intro { color: var(--muted); max-width: 65ch; margin: 0; }
+
+/* ---------- Skills ---------- */
+.skills { max-width: 1000px; margin: 0 auto; padding: 2rem 1.25rem; width: 100%; }
+.skill-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+.skill-card { background: var(--panel); padding: 1rem 1.1rem; border-radius: var(--radius); }
+.skill-card h3 { font-size: 1rem; }
+.badges { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.badges li { background: #3d362f; padding: .2rem .65rem; border-radius: 999px; font-size: .85rem; }
+
+/* ---------- Climbing wall ---------- */
+.wall { position: relative; padding: 3rem 1.25rem; }
+.holds { position: relative; max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column-reverse; }
+
+/* Top-rope style panel: rough texture (SVG noise) + bolt-hole grid on off-white */
+.holds::before {
+  content: "";
+  position: absolute; top: -3rem; bottom: -3rem; left: 50%;
+  width: var(--wall-w); transform: translateX(-50%);
+  background:
+    radial-gradient(circle, rgba(0,0,0,.28) 0 2px, transparent 3px) 0 0 / 56px 56px,
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.25  0 0 0 0 0.25  0 0 0 0 0.25  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    var(--wall);
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 3px var(--wall-edge), 0 0 40px rgba(0,0,0,.5);
+}
+
+/* Each experience is a "level". Its color shows difficulty, like gym route tape:
+   yellow (easiest) -> green -> blue -> purple -> orange -> red -> black (hardest). */
+.hold-row[data-level="1"] { --lc: #e3c53a; }
+.hold-row[data-level="2"] { --lc: #6bb04a; }
+.hold-row[data-level="3"] { --lc: #3a9ad0; }
+.hold-row[data-level="4"] { --lc: #7a62c8; }
+.hold-row[data-level="5"] { --lc: #d9772f; }
+.hold-row[data-level="6"] { --lc: #c0453a; }
+.hold-row[data-level="7"] { --lc: #2a2a2e; }
+
+.hold-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr var(--wall-w) 1fr;
+  align-items: center;
+  min-height: max(70vh, 600px);
+}
+
+/* Holds are generated by script.js into this layer, which sits over the wall column */
+.level-holds {
+  position: absolute; top: 0; bottom: 0; z-index: 1;
+  width: var(--wall-w);
+  left: calc(50% - var(--wall-w) / 2);
+  pointer-events: none;
+}
+.hold {
+  position: absolute;
+  width: calc(var(--w, 56px) * var(--hs));
+  height: calc(var(--h, 44px) * var(--hs));
+  transform: translate(-50%, -50%) rotate(var(--r, 0deg));
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.45), transparent 45%), var(--lc, #c0453a);
+  box-shadow: 0 5px 8px rgba(0,0,0,.45), inset 0 -4px 6px rgba(0,0,0,.3);
+}
+/* Irregular rock-like outlines */
+.hold.shape-0 { border-radius: 58% 42% 55% 45% / 48% 60% 40% 52%; }
+.hold.shape-1 { border-radius: 45% 55% 40% 60% / 55% 45% 55% 45%; }
+.hold.shape-2 { border-radius: 60% 40% 50% 50% / 42% 58% 42% 58%; }
+.hold.shape-3 { border-radius: 50% 50% 38% 62% / 60% 40% 60% 40%; }
+/* Real hold photo (transparent PNG) replaces the CSS shape */
+.hold img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.hold.has-img { background: none; box-shadow: none; border-radius: 0; }
+.hold.has-img img { filter: drop-shadow(0 5px 5px rgba(0,0,0,.5)); }
+
+/* ---------- Cards ---------- */
+.card {
+  grid-row: 1;
+  background: var(--panel);
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid #40372f;
+  border-left: 6px solid var(--lc, var(--accent));   /* level color stripe */
+  width: 100%; max-width: 420px;
+  font-size: 1.05rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.card.visible { opacity: 1; transform: none; }
+.card h3 { font-size: 1.35rem; }
+.desc { margin: 0; color: var(--text); }
+.tag { color: var(--accent); font-weight: 600; margin: 0 0 .4rem; }
+.hold-row.major .card { border: 2px solid var(--accent); border-left: 6px solid var(--lc); max-width: 450px; }
+
+/* Alternate left/right (odd rows = left of wall, even = right) */
+.hold-row:nth-child(odd) .card { grid-column: 1; justify-self: end; margin-right: 1.5rem; }
+.hold-row:nth-child(even) .card { grid-column: 3; justify-self: start; margin-left: 1.5rem; }
+
+/* Explainer notes sit on the opposite side from the experience card */
+.card.note {
+  background: rgba(43, 39, 36, .6);
+  border: 2px dashed #6b6157;
+  max-width: 380px;
+}
+.card.note h3 { font-size: 1.15rem; color: var(--accent); }
+.hold-row:nth-child(odd) .note { grid-column: 3; justify-self: start; margin: 0 0 0 1.5rem; }
+.hold-row:nth-child(even) .note { grid-column: 1; justify-self: end; margin: 0 1.5rem 0 0; }
+
+/* ---------- Footer ---------- */
+.footer { text-align: center; padding: 4rem 1.25rem; background: var(--panel); }
+.footer .buttons { justify-content: center; }
+.thanks { font-size: 1.5rem; font-weight: 600; margin: 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  :root { --wall-w: 280px; --hs: .85; }
+  .hold-row:nth-child(odd) .card { margin-right: .75rem; }
+  .hold-row:nth-child(even) .card { margin-left: .75rem; }
+}
+@media (max-width: 760px) {
+  :root { --wall-w: 70px; --hs: .6; }
+  .hero { padding-top: 6rem; }
+  .hero-top { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .ph.circle { width: 200px; }
+  .about { text-align: left; }
+
+  .holds::before { left: 0; transform: none; }
+  .level-holds { left: 0; }
+  .hold-row { grid-template-columns: var(--wall-w) 1fr; min-height: max(55vh, 520px); gap: 1rem 0; }
+  .hold-row .card,
+  .hold-row:nth-child(odd) .card,
+  .hold-row:nth-child(even) .card { grid-column: 2; justify-self: stretch; max-width: none; margin: 0 0 0 .75rem; }
+  /* Notes stack under the experience card */
+  .hold-row .note,
+  .hold-row:nth-child(odd) .note,
+  .hold-row:nth-child(even) .note { grid-column: 2; grid-row: 2; justify-self: stretch; max-width: none; margin: 0 0 0 .75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .nav-btn { transition: none; }
+  .card { opacity: 1; transform: none; }
+}

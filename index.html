@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nicolas Garcia | Embedded Software Engineer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Shown at base camp: jumps to the start of the climb -->
+<button class="nav-btn" id="startBtn" type="button">↑ Start the climb</button>
+
+<!-- Shown everywhere else: jumps back to the landing page -->
+<button class="nav-btn" id="backBtn" type="button">↓ Base Camp</button>
+
+<div class="page" id="page">
+
+  <!-- SECTION 1: HERO / BASE CAMP -->
+  <header class="hero" id="base-camp">
+    <div class="hero-top">
+      <div class="ph circle" data-label="portrait.png">
+        <img src="images/portrait.png" alt="Portrait of Nicolas Garcia">
+      </div>
+      <div class="hero-text">
+        <h1>Nicolas Garcia</h1>
+        <p class="title">Embedded Software Engineer</p>
+        <p class="subtitle">Cornell ECE Senior interested in robotics, embedded software, and hardware integration.</p>
+        <!-- PLACEHOLDER: replace this paragraph with your own about-me text -->
+        <p class="about">I'm a Cornell ECE senior who likes building things where software meets hardware. My experience spans embedded firmware, network automation, and robotics, from custom PCBs and ESP32 projects to LiDAR and camera integration on autonomous robots. I enjoy debugging hard problems, working with small teams, and explaining technical ideas clearly.</p>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <p class="intro">Welcome to my portfolio. Scroll upward to climb through my engineering journey, from my first technical experiences to professional embedded systems and robotics work.</p>
+      <div class="buttons">
+        <a class="btn primary" href="Nicolas_Garcia_Resume.pdf" download>Download Resume</a>
+        <a class="btn primary" href="projects.html">Projects</a>
+        <a class="btn" href="https://github.com/NicolasGarcia19" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/nicolas-garcia-37a261304/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p class="small">nicolaspgarcia292@gmail.com</p>
+    </div>
+  </header>
+
+  <!-- SECTION 2: SKILLS -->
+  <section class="skills" id="skills">
+    <h2>Skills</h2>
+    <div class="skill-grid">
+      <div class="skill-card"><h3>Programming</h3><ul class="badges"><li>C</li><li>C++</li><li>Python</li><li>Verilog</li></ul></div>
+      <div class="skill-card"><h3>Embedded Systems</h3><ul class="badges"><li>Microcontrollers</li><li>UART</li><li>SPI</li><li>I2C</li><li>Debugging</li></ul></div>
+      <div class="skill-card"><h3>Tools</h3><ul class="badges"><li>Git</li><li>VS Code</li><li>LTspice</li><li>Quartus</li><li>ModelSim</li></ul></div>
+      <div class="skill-card"><h3>Robotics</h3><ul class="badges"><li>Sensors</li><li>LiDAR</li><li>Cameras</li><li>Hardware Integration</li></ul></div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: CLIMBING WALL.
+       Each .hold-row is one "level" (listed oldest -> newest; the wall draws them bottom -> top).
+       data-level = difficulty (1 easiest ... 7 hardest): sets the hold color and card stripe.
+       data-holds = how many holds appear on that level. Fewer holds = harder climbing.
+       script.js generates the holds themselves. -->
+  <section class="wall" id="wall" aria-label="Career timeline">
+    <div class="holds">
+
+      <article class="hold-row" data-level="1" data-holds="8">
+        <div class="level-holds" aria-hidden="true"></div>
+        <div class="card">
+          <div class="ph" data-label="cornell_campus.jpg"><img src="images/cornell_campus.jpg" alt=""></div>
+          <h3>Cornell University</h3>
+          <p class="desc">I study Electrical and Computer Engineering at Cornell, where my coursework has centered on embedded systems, signals and systems, digital logic, and probability and inference. These classes gave me a foundation for moving comfortably between hardware and software.</p>
+        </div>
+        <aside class="card note">
+          <h3>How to read this wall</h3>
+          <p class="desc">This page is a climbing wall, and it's a metaphor for my experience so far. Each level is a stage of my journey, starting with my first classes at Cornell and climbing up to today.</p>
+        </aside>
+      </article>
+
+      <article class="hold-row" data-level="2" data-holds="7">
+        <div class="level-holds" aria-hidden="true"></div>
+        <div class="card">
+          <div class="ph" data-label="teaching_placeholder.jpg"><img src="images/teaching_placeholder.jpg" alt=""></div>
+          <h3>Teaching and Mentorship</h3>
+          <p class="desc">Explaining physics to other students has made me a clearer communicator. As a TA, Learning Assistant, and tutor, I've learned to break hard ideas into steps and to meet people at whatever level they're starting from.</p>
+        </div>
+      </article>
+
+      <article class="hold-row" data-level="3" data-holds="6">
+        <div class="level-holds" aria-hidden="true"></div>
+        <div class="card">
+          <div class="ph" data-label="cusd_project.png"><img src="images/cusd_project.png" alt=""></div>
+          <h3>CUSD Electrical Systems</h3>
+          <p class="desc">On the CUSD project team I worked on the electrical design of a solar-powered bus shelter, including custom PCBs, LED systems, and ESP32 firmware, while helping lead teammates toward a working system.</p>
+        </div>
+      </article>
+
+      <article class="hold-row" data-level="4" data-holds="5">
+        <div class="level-holds" aria-hidden="true"></div>
+        <div class="card">
+          <div class="ph" data-label="insekom_network.png"><img src="images/insekom_network.png" alt=""></div>
+          <h3>Insekom</h3>
+          <p class="desc">At Insekom I worked in network engineering on Huawei systems and used Python to automate repetitive operational tasks, improving efficiency across the infrastructure I supported.</p>
+        </div>
+        <aside class="card note">
+          <h3>The climb gets harder</h3>
+          <p class="desc">In rock climbing, the higher you go, the fewer holds there are, and the ones left are smaller and harder to grab. My experience works the same way: each step up has been more complicated and has asked for more problem solving.</p>
+        </aside>
+      </article>
+
+      <article class="hold-row" data-level="5" data-holds="4">
+        <div class="level-holds" aria-hidden="true"></div>
+        <div class="card">
+          <div class="ph" data-label="jiang_fellows.png"><img src="images/jiang_fellows.png" alt=""></div>
+          <h3>Jiang Fellowship</h3>
+          <p class="desc">I worked with a cohort of 25 fellows to explore the robotics startup space, and learn how to communicate and find startups that interested me. Started to develop my network in the entrepreneurship space, specifically in Pittsburgh.</p>
+        </div>
+        
+      </article>
+
+      <article class="hold-row major" data-level="6" data-holds="3">
+        <div class="level-holds" aria-hidden="true"></div>
+        <div class="card">
+          <div class="ph" data-label="thoro_robot.jpeg"><img src="images/thoro_robot.jpeg" alt=""></div>
+          <h3>Thoro.ai</h3>
+          <p class="tag">Embedded Software Intern</p>
+          <p class="desc">As an embedded software intern at a robotics startup, I integrated LiDAR and camera systems on an autonomous robot, writing C/C++ and working closely with a small team in a fast-moving environment.</p>
+        </div>
+      </article>
+
+      <article class="hold-row" data-level="7" data-holds="2">
+        <div class="level-holds" aria-hidden="true"></div>
+        <div class="card">
+          <div class="ph" data-label="future_robotics.jpg"><img src="images/future_robotics.jpg" alt=""></div>
+          <h3>Embedded Software Engineer @ Thoro.ai</h3>
+          <p class="desc">Next, I'm moving into a full-time embedded software role at Thoro.ai, with the goal of continuing to grow in autonomous systems and taking on larger pieces of the design.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- FOOTER (the summit) -->
+  <footer class="footer" id="contact">
+    <p class="thanks">Thanks for climbing through my journey.</p>
+    <div class="buttons">
+      <a class="btn primary" href="resume.pdf" download>Download Resume</a>
+      <a class="btn primary" href="projects.html">Projects</a>
+      <a class="btn" href="https://github.com/NicolasGarcia19" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/nicolas-garcia-37a261304/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="small">nicolaspgarcia292@gmail.com</p>
+  </footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
