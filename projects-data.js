@@ -91,14 +91,14 @@ window.PROJECTS = [
     template: 'basic',
     title: 'Single-Cycle Microprocessor on FPGA',
     summary: 'Implemented a single cycle microprocessor in Verilog that can execute multiple instruction programs with branching and halting functionality.',
-    intro: 'Placeholder short description. Say what you built, who it was for, and what made it hard.',
+    intro: 'Placeholder short description. ',
     image: 'images/projects/project-4.png',
     tags: ['Computer Architecture', 'Verilog', 'FPGA', 'Cornell - ECE 2300'],
     links: [],
     pitches: [
-      { title: 'The problem', text: 'Placeholder: what needed solving and why.' },
-      { title: 'The approach', text: ['Placeholder: how you tackled it.', 'You can use a list of strings for several paragraphs.'] },
-      { title: 'The result', text: 'Placeholder: what you delivered and what you would do next.' }
+      { title: 'The problem', text: 'Placeholder' },
+      { title: 'The approach', text: ['Placeholder'] },
+      { title: 'The result', text: 'Placeholder' }
     ]
   },
   {
@@ -106,22 +106,14 @@ window.PROJECTS = [
     template: 'basic',
     title: 'Portfolio Optimization with Binary Classification',
     summary: 'Built a two stage convex optimization pipeline that used binary classification to improve risk adjusted returns on a selected number of stocks.',
-    intro: 'Placeholder short description. Say what you built, who it was for, and what made it hard.',
+    intro: 'The main question that I wanted an answer to was "Can a binary classifier trained on historical market features improve portfolio performance when its predictions are integrated into an optimization model that balances return and risk?". Using python and financial data we would be able to find the answer to this with a two stage optimization pipeline.',
     image: 'images/projects/project-5.png',
-    tags: ['Tag A', 'Tag B'],
+    tags: ['Convex Optimization', 'Python', 'Cornell - ECE 4800'],
     links: [],
-    facts: [
-      { label: 'Role', value: 'Placeholder' },
-      { label: 'Timeline', value: 'Placeholder' },
-      { label: 'Tools', value: 'Placeholder' }
-    ],
-    images: [
-      { src: 'images/projects/project-5-a.jpg', caption: 'Placeholder caption' }
-    ],
     pitches: [
-      { title: 'The problem', text: 'Placeholder text.' },
-      { title: 'The approach', text: 'Placeholder text.' },
-      { title: 'The result', text: 'Placeholder text.' }
+      { title: 'The problem', text: 'Can we use convex optimization techniques in order to improve returns on a 14 stock sample while using around 7 years of historical data. We compare it to an equal weight portfolio and return only portfolio on those same stocks at the same time. ' },
+      { title: 'The approach', text: 'The first half of my implementation was a standard binary classification pipeline that predicted if the next days returns would be non negative. I used a weighted logistic loss funciton that included L2 regularization in order to stay within the bounds of convex optimization. The second stage of the pipeline was a portfolio optimization pipeline that balances the expected return with the predicted risk in order to protect against volatile stocks. ' },
+      { title: 'The result', text: 'We split up our 7 years of data into 5 years of training and 2 years of testing. Due to the difficulty of predicting short-term financial returns my pipeline resulted in the range of 50%-55% accuracy, which is considered realistic in finance literature. When comparing to the other portfolio styles we found that the pipeline resulted in the most returns with 288% returns over the two years. It had around 2.3% daily volatility and a Sharpe Ratio of 2.179.' }
     ]
   },
   {
@@ -129,18 +121,10 @@ window.PROJECTS = [
     template: 'basic',
     title: 'Handwriting Recognition System ',
     summary: 'Built a handwriting recognition system using modular design and templated data structures for flexibility.',
-    intro: 'Placeholder short description. Say what you built, who it was for, and what made it hard.',
+    intro: 'Placeholder short description.',
     image: 'images/projects/project-6.png',
     tags: ['Tag A'],
     links: [],
-    facts: [
-      { label: 'Role', value: 'Placeholder' },
-      { label: 'Timeline', value: 'Placeholder' }
-    ],
-    images: [
-      { src: 'images/projects/project-6-a.jpg', caption: 'Placeholder caption' },
-      { src: 'images/projects/project-6-b.jpg', caption: 'Placeholder caption' }
-    ],
     pitches: [
       { title: 'The problem', text: 'Placeholder text.' },
       { title: 'The approach', text: 'Placeholder text.' },
