@@ -91,7 +91,7 @@ window.PROJECTS = [
     template: 'basic',
     title: 'Single-Cycle Microprocessor on FPGA',
     summary: 'Implemented a single cycle microprocessor in Verilog that can execute multiple instruction programs with branching and halting functionality.',
-    intro: 'Placeholder short description. ',
+    intro: 'This project is a complete single-cycle microprocessor design in Verilog through the Intel Quartus software for FPGA use. The key components are a CPU with a program counter, instruction memory, register file, an arithmetic logic unit (ALU), and data memory (RAM). ',
     image: 'images/projects/project-4.png',
     tags: ['Computer Architecture', 'Verilog', 'FPGA', 'Cornell - ECE 2300'],
     links: [],
