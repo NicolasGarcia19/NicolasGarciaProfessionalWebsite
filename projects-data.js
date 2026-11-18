@@ -75,17 +75,15 @@ window.PROJECTS = [
     template: 'climb',
     title: 'Birdsong Synthesizer',
     summary: 'Using Direct Digital Synthesis(DDS) we developed a birdsong synthesizer that could record and playback frequency swoops.',
-    intro: 'Placeholder short description. Say what you built, who it was for, and what made it hard.',
+    intro: 'The goal of this project was to use a RP2350 to build a birdsong synthesizer in order to recreate one of the most common songs of a Northern Cardinal. This works because cardinal songs are tones that sweep across a frequency range that we can recreate using Direct Digital Synthesis(DDS). Then we send these frequency tones via SPI to a 12 bit DAC to play the tones. This system is controlled by user input through a slide potentiometer that can be used to record frequencies between 0 and 10k Hz and through a keypad that lets the user record, store, and playback custom frequency tone sequences.',
     image: 'images/projects/project-3.png',
-    tags: ['Tag A', 'Tag B', 'Tag C'],
+    tags: ['Embedded Systems', 'C', 'RP2350', 'Cornell - ECE 4760'],
     links: [],
     steps: [
-      { title: 'Step one', text: 'Placeholder text.' },
-      { title: 'Step two', text: 'Placeholder text.' },
-      { title: 'Step three', text: 'Placeholder text.', image: 'images/projects/project-3-step-3.jpg' },
-      { title: 'Step four', text: 'Placeholder text.' },
-      { title: 'Step five', text: 'Placeholder text.' },
-      { title: 'Step six', text: 'Placeholder text.', stat: 'Metric: result' }
+      { title: 'DAC & SPI', text: 'The first step in our plan was set up the DAC and the SPI correctly in order to be able to test our DDS implementation.' },
+      { title: 'Slide Potentiometer', text: 'We then implemented a slide potentiometer that would control the tone that was being outputted by the DAC. This gave us the system necessary to add all of the other features.' },
+      { title: 'Keypad', text: 'Then we implemented a keypad in order to store recordings of frequency swoops by using the \'*\' key as a way to enter record mode. This section required us adding debouncing to the software behind our keypad implementation.'},
+      { title: 'Compose Mode', text: 'Finally we added a "compose" mode to the system where you could string together different recordings that have been saved. This used the \'#\' key as a way to enter that mode and we used this mode in order to string together the swoops/chirps in order to imitate one of the Northern Cardinals birdsongs.' },
     ]
   },
   {
@@ -95,18 +93,8 @@ window.PROJECTS = [
     summary: 'Implemented a single cycle microprocessor in Verilog that can execute multiple instruction programs with branching and halting functionality.',
     intro: 'Placeholder short description. Say what you built, who it was for, and what made it hard.',
     image: 'images/projects/project-4.png',
-    tags: ['Tag A', 'Tag B'],
+    tags: ['Computer Architecture', 'Verilog', 'FPGA', 'Cornell - ECE 2300'],
     links: [],
-    facts: [
-      { label: 'Role', value: 'Placeholder' },
-      { label: 'Timeline', value: 'Placeholder' },
-      { label: 'Team', value: 'Placeholder' },
-      { label: 'Tools', value: 'Placeholder' }
-    ],
-    images: [
-      { src: 'images/projects/project-4-a.jpg', caption: 'Placeholder caption for the first image' },
-      { src: 'images/projects/project-4-b.jpg', caption: 'Placeholder caption for the second image' }
-    ],
     pitches: [
       { title: 'The problem', text: 'Placeholder: what needed solving and why.' },
       { title: 'The approach', text: ['Placeholder: how you tackled it.', 'You can use a list of strings for several paragraphs.'] },
