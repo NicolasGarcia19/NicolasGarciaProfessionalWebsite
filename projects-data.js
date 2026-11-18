@@ -123,7 +123,7 @@ window.PROJECTS = [
     summary: 'Built a handwriting recognition system using modular design and templated data structures for flexibility.',
     intro: 'Placeholder short description.',
     image: 'images/projects/project-6.png',
-    tags: ['Tag A'],
+    tags: ['C/C++', 'Cornell - ECE 2400'],
     links: [],
     pitches: [
       { title: 'The problem', text: 'Placeholder text.' },
