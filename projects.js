@@ -129,7 +129,7 @@
     const steps = p.steps || [];
     const sec = el('section', { class: 'climb', 'aria-labelledby': 'climbHeading' });
     sec.appendChild(el('h2', { id: 'climbHeading', text: p.climbTitle || 'The climb' }));
-    sec.appendChild(el('p', { class: 'climb-hint', text: p.climbHint || 'Each hold is a step in how this project came together. Hover over a hold, or tap it, to see how I got there.' }));
+    sec.appendChild(el('p', { class: 'climb-hint', text: p.climbHint || 'Each hold is a step in how this project came together. Hover over a hold, or tap it, to see how the goal was reached.' }));
     if (!steps.length) return sec;
 
     sec.appendChild(el('div', { class: 'traverse-legend', 'aria-hidden': 'true' }, [

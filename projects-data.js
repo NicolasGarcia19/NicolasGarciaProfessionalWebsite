@@ -40,17 +40,17 @@ window.PROJECTS = [
     template: 'climb',
     title: 'PID Control of a 1D helicopter',
     summary: 'Demonstrated a tuned PID controller using IMU sensor data to accurately move a 1D helicopter to a certain hover angle.',
-    intro: 'Placeholder short description. Say what you built, who it was for, and what made it hard.',
+    intro: 'The goal of the project was to build and control a one-degree-of-freedom helicopter. A small drone motor is mounted on the end of a lever arm, and the other end of the arm is attached to a hinge, so the arm can only swing up and down. When the motor spins faster, its thrust lifts the arm to a higher angle. Our goal was to make the arm move to any angle the user asks for and hold it there. ',
     image: 'images/projects/project-1.png',
-    tags: ['Embedded Systems', 'C', 'RP2350'],
+    tags: ['Embedded Systems', 'C', 'RP2350', 'Cornell - ECE 4760'],
     //links: [{ label: 'GitHub', href: 'https://github.com/NicolasGarcia19' }],
-    climbHint: 'Each hold is a step along the process. Hover over a hold, or tap it, to see how I worked through the problem.',
+    climbHint: 'Each hold is a step along the process. Hover over a hold, or tap it, to see how the goal was reached.',
     steps: [
       { title: 'Starting point', text: 'We started by soldering together our provided circuit board that would manage the necessary connections and power control for the IMU and the motor.'},
       { title: 'Proportional Gain', text: 'Once the hardware and mechanical system was in place we started by designing the proportional control part of the system. We used this as a starting point in our tuning process.'},
       { title: 'Derivative Gain', text: 'We then implemented the derivative gain part of the system in order to remove the oscillations that we would see when trying to get to our target angle.' },
-      { title: 'Integral Gain', text: 'Placeholder: the part that took the most debugging, and what you learned.', image: 'images/projects/project-1-step-4.jpg' },
-      { title: 'Final result', text: 'Placeholder: where the project ended up and how you measured it.', stat: 'Metric: after' }
+      { title: 'Integral Gain', text: 'Then in order to remove the steady state error we implemented the integral gain in order to finalize our PID controller. We also ensured to protect against integrator windup in our implementation. ' },
+      { title: 'Final result', text: 'Finally we kept adjusting our values in order to get a snappy response to a new target angle where the helicopter didn\'t overshoot the target and settled in 1-3 seconds. ' }
     ]
   },
   {
@@ -58,15 +58,16 @@ window.PROJECTS = [
     template: 'climb',
     title: 'Digital Galton Board Optimization',
     summary: 'Tested the limits of process optimization on a RP2350 through optimizing the amount of balls animated on a 60fps VGA display with collision physics.',
-    intro: 'Placeholder short description. Say what you built, who it was for, and what made it hard.',
+    intro: 'The goal of this project was to use an RP2350 to build a digital Galton board and display it on a VGA screen. A Galton board is a board with rows of pegs where balls are dropped from the top, bounce off the pegs, and land in bins at the bottom. If enough balls fall, the number of balls in each bin forms a bell-shaped (Gaussian) curve. Our board has 16 rows of pegs (136 pegs total) and 17 bins. Each ball falls under gravity, and when it hits a peg, it bounces off using standard collision physics mimicking what would happen in reality. As balls pass the bottom row, they are counted into their bin, and a histogram under the board shows how many balls landed in each one. Once the system was designed the goal was to test how far the RP2350 could be pushed and how many balls could be animated on the VGA display while keeping up with the 60FPS requirement.',
     image: 'images/projects/project-2.jpg',
-    tags: ['Tag A', 'Tag B'],
+    tags: ['Embedded Systems', 'C', 'RP2350', 'Cornell - ECE 4760'],
     links: [],
+    climbHint: 'Each hold is another optimization that was added onto the system. Hover over a hold, or tap it, to see how the optimizations progressed.',
     steps: [
-      { title: 'Step one', text: 'Placeholder text for the first step.' },
-      { title: 'Step two', text: 'Placeholder text for the second step.', image: 'images/projects/project-2-step-2.jpg' },
-      { title: 'Step three', text: 'Placeholder text for the third step.' },
-      { title: 'Step four', text: 'Placeholder text for the last step.', stat: 'Metric: result' }
+      { title: 'Pre Optimization - Base Implementation 1100 balls', text: 'We started with only 1100 balls on our VGA display. This was without any optimizations and what the base implementation with one core of the RP2350 could do. The basic functionality that is shown at this point was correct collision physics, histogram drawing, and rotary encoder control for ball number.', image: 'images/projects/project-2-step-1.png' },
+      { title: '8600 Balls', text: 'To get to this point we implemented some basic optimizations of splitting ball creation onto the 2 ARM cores on the RP2350. We also changed the display to only draw the outlines of the balls which gave us a large amount of time back. We then doubled our ball count by overclocking the RP2350 from its original clock speed of 150MHz to 300MHz.', image: 'images/projects/project-2-step-2.png' },
+      { title: '10000 Balls', text: 'This was the maximum that we could achieve with time optimizations. These optimizations were decreasing the ball size which decreased the amount of pixels that we had to draw and writing our own drawing functions that didn\'t use any math and had hardcoded values. In addition to this we updated some of the calculations in order to use more efficient math.', image: 'images/projects/project-2-step-3.png'},
+      { title: 'Final Result - 18000 Balls', text: 'Our memory optimization mainly included changing the amount of bits that were used in our VGA driver to send color information. By halving from 4 bit color to 2 bit color we were able to gain back a large part of our memory to use for more animation. This included rewriting the RP2350 PIO drivers. We also added more fixed point units in order to save as much room as possible.', image: 'images/projects/project-2-step-4.jpg' }
     ]
   },
   {
